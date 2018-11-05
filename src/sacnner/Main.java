@@ -22,17 +22,25 @@ public class Main {
         
         Scanner input = new Scanner (System.in);
         TinyScanner tinyScanner = new TinyScanner();
-        String in= input.next();
+        String in= input.nextLine();
        // System.out.println(in);
       ArrayList<String> tokensList = new ArrayList();
-       for(char x:in.toCharArray()){
+        
            
-           String token=tinyScanner.takeCharacter(x);
-           if(token != null){
+       for(char x:in.toCharArray()){
+           //System.out.println(x);
+         String token=tinyScanner.takeCharacter(x);
+         //System.out.println(token);
+           if(token != null)
+           {
                tokensList.add(token);
+               System.out.println(token);
            }
+           if (x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/') {token=Character.toString(x);tokensList.add(token);
+           if(x=='='&& token!="="){token=Character.toString(x);tokensList.add(token);}
+               System.out.println(token);}
        }
-      
+     
     }
     
 }
