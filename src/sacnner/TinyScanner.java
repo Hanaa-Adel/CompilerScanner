@@ -8,22 +8,24 @@ package sacnner;
 public class TinyScanner {
     private String currentInput;
     State state ;
-    Token token=new Token();
+    Token tinyToken=new Token();
     String temporary ;
+    
     public TinyScanner() {
        currentInput="";
        state =State.START;
        
     }
     
-    public String takeCharacter(char x){
-        if (x==' '&& state!=State.START)   
+    public Token takeCharacter(char x){
+        if (x==' '&& state!=State.START && state!=State.INCOMMENT)   
             state =State.DONE;
         temporary="";
         switch(state){
                 case START:
                     if (x==' ')      {state=State.START; temporary=""; break;}
-                    else if (x=='{') {currentInput+=x; state=State.INCOMMENT;break;}
+                    else if (x=='{') { state=State.INCOMMENT;break;}
+                    
                     else if(x==':')  {currentInput+=x; state=State.INASSIGN;break;}
                     else if(Character.isAlphabetic(x))     {currentInput+=x; 
                         state=State.INID;break;}
@@ -50,8 +52,8 @@ public class TinyScanner {
                     
                     
                 case INCOMMENT:
-                {if (x=='}')      {currentInput+=x; state=State.START;break;}
-                    else             {currentInput+=x; state=State.INCOMMENT;break;}}
+                {if (x=='}')      { state=State.START;break;}
+                    else             { state=State.INCOMMENT;break;}}
                     
 //                case DONE:
 //                  //  String temporary =new String (currentInput);
@@ -63,29 +65,28 @@ public class TinyScanner {
 //                    break;
                    // return  temporary;
                 default: break;
-       // currentInput+=x;
-      //  System.out.println(currentInput);
     }
 //        if(temporary==" ") return null;
 //        
 //        else 
 //        return  temporary;
+if (x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/' &&state !=State.INCOMMENT ){ currentInput+=x;}
     if(state==State.DONE)
-                  //  String temporary =new String (currentInput);
-                     
     {          
                  temporary=currentInput;
+                 
                     state=State.START;
                     currentInput="";
-                    
+                    tinyToken=tinyToken.generateTokenType(temporary);
 //                    if (x==';'){
 //                        currentInput+=x;
 //                        takeCharacter(x);
 //                        x=' ';
 //                    }
     }
-        if (temporary!="") return temporary;
+        if (temporary!="") return tinyToken;
         else return null;
+       
     }
     
     private enum State {START,INNUM,INID,INASSIGN,INCOMMENT,DONE}

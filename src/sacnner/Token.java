@@ -15,11 +15,12 @@ public class Token {
 
     public Token() {}
     
-    public Token(String tokenValue ) {
+    public Token(String tokenValue ,String tokenType) {
         this.tokenValue=tokenValue;
+        this.tokenType=tokenType;
     }
     
-    public void generateTokenType(String value ){
+    public Token generateTokenType(String value ){
         
         if (tokenValue =="if"|tokenValue =="then"|tokenValue =="else"
                 |tokenValue =="end"|tokenValue =="repeat"|tokenValue =="until"
@@ -40,6 +41,8 @@ public class Token {
             tokenType="Number";
             
         }
+        Token totalToken=new Token(tokenValue,tokenType);
+        return totalToken;
     }
 //    if(tokenValue==Identifier)
 //    {
@@ -53,4 +56,10 @@ public class Token {
     }
     return true;
 }
+    public void printToken(Token t){
+        
+        System.out.println(t.tokenValue + " is " + t.tokenType);
+        //System.out.println(t.tokenType);
+         
+    }
 }
