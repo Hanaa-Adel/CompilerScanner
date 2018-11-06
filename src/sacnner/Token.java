@@ -30,7 +30,7 @@ public class Token {
 //        if (value =="if"||value =="then"||value =="else"
 //                ||value =="end"||value =="repeat"||value =="until"
 //                ||value =="read"||value =="write")
-          if (value=="read")
+          if (value=="read ")
                 
         {
             tokenType="Reserved word";
@@ -47,6 +47,9 @@ public class Token {
             tokenType="Number";
             
         }
+        
+       else tokenType="Identifier";
+          
         Token totalToken=new Token(tokenValue,tokenType);
         return totalToken;
     }

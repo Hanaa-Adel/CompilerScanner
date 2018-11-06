@@ -40,7 +40,7 @@ public class TinyScanner {
                             
                 case INID :
                 { 
-                    if(Character.isAlphabetic(x))     {currentInput+=x;
+                    if(Character.isAlphabetic(x) || Character.isDigit(x))     {currentInput+=x;
                         state=State.INID;break;}
                       
                     else                              state=State.DONE;break;}
