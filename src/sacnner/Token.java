@@ -11,7 +11,7 @@ package sacnner;
  */
 public class Token {
    private String tokenValue;
-     String tokenType;
+   private  String tokenType;
 
     public Token() {}
     
@@ -19,24 +19,30 @@ public class Token {
         this.tokenValue=tokenValue;
         this.tokenType=tokenType;
     }
+
+    public Token(String tokenValue) {
+        this.tokenValue = tokenValue;
+    }
+    
     
     public Token generateTokenType(String value ){
         
-        if (tokenValue =="if"|tokenValue =="then"|tokenValue =="else"
-                |tokenValue =="end"|tokenValue =="repeat"|tokenValue =="until"
-                |tokenValue =="read"|tokenValue =="write")
+//        if (value =="if"||value =="then"||value =="else"
+//                ||value =="end"||value =="repeat"||value =="until"
+//                ||value =="read"||value =="write")
+          if (value=="read")
                 
         {
             tokenType="Reserved word";
         }
-        if (tokenValue =="+"|tokenValue =="-"|tokenValue =="*"
-                |tokenValue =="/"|tokenValue =="="|tokenValue =="<"
-                |tokenValue =="("|tokenValue ==")"|tokenValue ==";"|tokenValue ==";=")
+       else if (value =="+"|value =="-"|value =="*"
+                |value =="/"|value =="="|value =="<"
+                |value =="("|value ==")"|value ==";"|value ==";=")
                 
         {
              tokenType="Special symbol";
         }
-        if(isNumeric(tokenValue))
+       else if(isNumeric(value))
         {
             tokenType="Number";
             

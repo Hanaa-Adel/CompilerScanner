@@ -77,6 +77,7 @@ if (x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/' &&state !=State.INCOMMENT ){ curre
                  
                     state=State.START;
                     currentInput="";
+                    tinyToken=new Token(temporary);
                     tinyToken=tinyToken.generateTokenType(temporary);
 //                    if (x==';'){
 //                        currentInput+=x;
