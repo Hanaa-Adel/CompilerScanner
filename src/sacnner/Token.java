@@ -1,6 +1,10 @@
 
 package sacnner;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+
 /**
  *
  * @author Hanaa
@@ -15,10 +19,28 @@ public class Token {
         this.tokenValue=tokenValue;
         this.tokenType=tokenType;
     }
-
     public Token(String tokenValue) {
         this.tokenValue = tokenValue;
     }
+
+    public void setTokenValue(String tokenValue) {
+        this.tokenValue = tokenValue;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
+    }
+
+    public String getTokenValue() {
+        return tokenValue;
+    }
+
+    public String getTokenType() {
+        return tokenType;
+    }
+    
+
+    
     
     
     public Token generateTokenType(String value ){
@@ -58,8 +80,7 @@ public class Token {
 }
     public void printToken(Token t){
         
-        System.out.println(t.tokenValue + " is " + t.tokenType);
-        //System.out.println(t.tokenType);
+        System.out.println(t.tokenValue + " is a " +"'" + t.tokenType +"'");
          
     }
 }

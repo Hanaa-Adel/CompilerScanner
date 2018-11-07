@@ -1,0 +1,4 @@
+if is Reserved word
+then is Reserved word
+else is Reserved word
+; is Special symbol
