@@ -5,6 +5,7 @@
  */
 package sacnner;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,15 +36,34 @@ public class Main {
          //System.out.println(token);
            if(token != null)
            {
+//               try{
+//               PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+//               writer.println();
+//               
+//               writer.println();
+//               writer.close();}
+//               catch(IOException e1) {
+//                    System.out.println("Error during reading/writing");}
                //tokensList.add(token);
               // System.out.println(token);
+//               try
+//                {
+//                    PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
+//                    System.setOut(out);
+//
+//                }
+//                catch(IOException e1) {
+//                     System.out.println("Error during reading/writing");
+//                }
              token. printToken(token);
+             
            }
+          
 //           if (x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/') {token=Character.toString(x);tokensList.add(token);
 //           if(x=='='&& token!="="){token=Character.toString(x);tokensList.add(token);}
 //               System.out.println(token);}
        }
      
     }
-    
+   
 }

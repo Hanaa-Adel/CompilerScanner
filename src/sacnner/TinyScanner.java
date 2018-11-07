@@ -10,7 +10,8 @@ public class TinyScanner {
     State state ;
     Token tinyToken=new Token();
     String temporary ;
-    
+    int semiCount=0;
+    String semi;
     public TinyScanner() {
        currentInput="";
        state =State.START;
@@ -18,8 +19,10 @@ public class TinyScanner {
     }
     
     public Token takeCharacter(char x){
+        
         if (x==' '&& state!=State.START && state!=State.INCOMMENT)   
             state =State.DONE;
+        if (x==';'){semiCount=1; semi=";"; state=State.DONE;}
         temporary="";
         switch(state){
                 case START:
@@ -54,37 +57,28 @@ public class TinyScanner {
                 case INCOMMENT:
                 {if (x=='}')      { state=State.START;break;}
                     else             { state=State.INCOMMENT;break;}}
-                    
-//                case DONE:
-//                  //  String temporary =new String (currentInput);
-//                     
-//                     
-//                 temporary=currentInput;
-//                    state=State.START;
-//                    currentInput="";
-//                    break;
-                   // return  temporary;
+
                 default: break;
     }
-//        if(temporary==" ") return null;
-//        
-//        else 
-//        return  temporary;
-if (x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/' &&state !=State.INCOMMENT ){ currentInput+=x;}
+
+if ((x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/' &&state !=State.INCOMMENT)||(x=='=' &&state !=State.INCOMMENT && currentInput!=":=") )
+    {
+        
+        currentInput+=x;
+        state=State.DONE;
+       // else currentInput+=x;
+    }
     if(state==State.DONE)
     {          
-                 temporary=currentInput;
-                 
-                    state=State.START;
-                    currentInput="";
-                    tinyToken=new Token(temporary);
-                    tinyToken=tinyToken.generateTokenType(temporary);
-//                    if (x==';'){
-//                        currentInput+=x;
-//                        takeCharacter(x);
-//                        x=' ';
-//                    }
+        temporary=currentInput;
+        state=State.START;
+        currentInput="";
+        tinyToken=new Token(temporary);
+        tinyToken=tinyToken.generateTokenType(temporary);
+                    
+                       
     }
+  
         if (temporary!="") return tinyToken;
         else return null;
        

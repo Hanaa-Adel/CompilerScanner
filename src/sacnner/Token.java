@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sacnner;
 
 /**
@@ -27,17 +23,15 @@ public class Token {
     
     public Token generateTokenType(String value ){
         
-//        if (value =="if"||value =="then"||value =="else"
-//                ||value =="end"||value =="repeat"||value =="until"
-//                ||value =="read"||value =="write")
-          if (value=="read")
-                
-        {
+        if (value .equals("if")||value .equals("then")||value .equals("else")
+                ||value .equals("end")||value .equals("repeat")||value .equals("until")
+                ||value .equals("read")|value .equals("write"))
+        {     
             tokenType="Reserved word";
         }
-       else if (value =="+"|value =="-"|value =="*"
-                |value =="/"|value =="="|value =="<"
-                |value =="("|value ==")"|value ==";"|value ==";=")
+       else if (value .equals("+")|value .equals("-")|value .equals("*")
+                |value .equals("/")|value .equals("=")|value .equals("<")
+                |value.equals("(")|value.equals(")")|value .equals(";")|value.equals(":="))
                 
         {
              tokenType="Special symbol";
@@ -53,10 +47,7 @@ public class Token {
         Token totalToken=new Token(tokenValue,tokenType);
         return totalToken;
     }
-//    if(tokenValue==Identifier)
-//    {
-//        
-//    }
+
     public static boolean isNumeric(String strNum) {
     try {
         double d = Double.parseDouble(strNum);
