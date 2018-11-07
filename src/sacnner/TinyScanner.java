@@ -61,7 +61,7 @@ public class TinyScanner {
                 default: break;
     }
 
-if ((x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/' &&state !=State.INCOMMENT)||(x=='=' &&state !=State.INCOMMENT && currentInput!=":=") )
+if ((x=='*'|x=='+'|x=='<'|x=='-'|x=='/' &&state !=State.INCOMMENT)||(x=='=' &&state !=State.INCOMMENT && currentInput!=":=") )
     {
         
         currentInput+=x;

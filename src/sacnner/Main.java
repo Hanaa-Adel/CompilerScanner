@@ -58,6 +58,12 @@ public class Main {
              token. printToken(token);
              
            }
+           if (x==';')
+           {
+             totalToken=new Token(";");
+             totalToken= totalToken.generateTokenType(";");
+             totalToken.printToken(totalToken);
+           }
           
 //           if (x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/') {token=Character.toString(x);tokensList.add(token);
 //           if(x=='='&& token!="="){token=Character.toString(x);tokensList.add(token);}
