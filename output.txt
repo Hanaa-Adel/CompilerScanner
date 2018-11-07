@@ -1,4 +1,5 @@
-if is Reserved word
-then is Reserved word
-else is Reserved word
+x is Identifier
+:= is Special symbol
+x+ is Identifier
+1 is Number
 ; is Special symbol

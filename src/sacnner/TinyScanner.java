@@ -50,7 +50,7 @@ public class TinyScanner {
                    
                 
                 case INASSIGN:
-                {  if (x=='=')      {currentInput+=x; state=State.DONE;break;}
+                {  if (x=='=')      { state=State.DONE;break;}
                     else             { state=State.DONE;break;}} 
                     
                     
@@ -61,12 +61,15 @@ public class TinyScanner {
                 default: break;
     }
 
-if ((x=='*'|x=='+'|x=='<'|x=='-'|x=='/' &&state !=State.INCOMMENT)||(x=='=' &&state !=State.INCOMMENT && currentInput!=":=") )
-    {
+if (state !=State.INCOMMENT &&x=='*'|x=='+'|x=='<'|x=='-'|x=='/'){
         
         currentInput+=x;
         state=State.DONE;
-       // else currentInput+=x;
+      
+    }
+if (x=='='& currentInput!=":="){
+        currentInput+=x;
+        state=State.DONE;
     }
     if(state==State.DONE)
     {          

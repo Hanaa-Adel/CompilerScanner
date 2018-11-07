@@ -2,11 +2,11 @@
 package sacnner;
 
 import java.io.*;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.scene.input.KeyCode.C;
 /**
  *
  * @author Hanaa
@@ -20,9 +20,11 @@ public class Main {
         // TODO code application logic here
         
         Scanner input = new Scanner (System.in);
-        TinyScanner tinyScanner = new TinyScanner();
-        Token totalToken=new Token();
+        TinyScanner tinyScanner = new TinyScanner(); 
+        Token totalToken=new Token(); // to declare ';' so that the line is finished
         String in= input.nextLine();
+        String inputText;
+        inputText = readFile(new File ("‪src\\\\input.txt"));
        // System.out.println(in);
       //ArrayList<String> tokensList = new ArrayList();
       ArrayList<Token>tokensList=new ArrayList();  
@@ -30,7 +32,7 @@ public class Main {
        for(char x:in.toCharArray()){
            //System.out.println(x);
         // String token=tinyScanner.takeCharacter(x);
-       Token token=tinyScanner.takeCharacter(x);
+       Token token=tinyScanner.takeCharacter(x); // declaration of token from scanner
          //System.out.println(token);
            if(token != null)
            {   token. printToken(token);            
@@ -70,5 +72,22 @@ public class Main {
        }
      
     }
-   
+   private static String readFile(File fileName) throws IOException {
+      String filename = "input.txt";
+        BufferedReader br = new BufferedReader(new FileReader(new File (filename)));
+          
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                sb.append("\n");
+                line = br.readLine();
+            }
+            return sb.toString();
+        } finally {
+            br.close();
+        }
+    }
 }
