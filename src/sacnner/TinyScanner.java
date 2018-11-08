@@ -11,7 +11,7 @@ public class TinyScanner {
     Token tinyToken=new Token();
     String temporary ;
     int semiCount=0;
-    String semi;
+    String special="";
     public TinyScanner() {
        currentInput="";
        state =State.START;
@@ -20,9 +20,22 @@ public class TinyScanner {
     
     public Token takeCharacter(char x){
         
+        if (semiCount==1){
+            semiCount=0;
+            if (special.equals(";")&& x=='}') { special="";return null; } 
+            temporary=special;
+            special="";
+            tinyToken=new Token(temporary);
+        tinyToken=tinyToken.generateTokenType(temporary);
+        currentInput+=x;
+        if(Character.isAlphabetic(x)) state=State.INID;
+        else if (Character.isDigit(x)) state =State.INNUM;
+            
+        return tinyToken;
+        }
         if (x==' '&& state!=State.START && state!=State.INCOMMENT)   
             state =State.DONE;
-        if (x==';'){semiCount=1; semi=";"; state=State.DONE;}
+        
         temporary="";
         switch(state){
                 case START:
@@ -61,10 +74,12 @@ public class TinyScanner {
                 default: break;
     }
 
-if (state !=State.INCOMMENT &&x=='*'|x=='+'|x=='<'|x=='-'|x=='/'){
+if (state !=State.INCOMMENT &&x=='*'|x=='+'|x=='<'|x=='-'|x=='/'|x==';'){
         
-        currentInput+=x;
+        //currentInput+=x;
         state=State.DONE;
+        semiCount=1;
+        special+=x;
       
     }
 if (x=='='& currentInput!=":="){

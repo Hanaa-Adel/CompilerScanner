@@ -1,5 +1,14 @@
+read is Reserved word
+x is Identifier
+; is Special symbol
+
 x is Identifier
 := is Special symbol
-x+ is Identifier
+x is Identifier
++ is Special symbol
 1 is Number
+; is Special symbol
+
+write is Identifier
+x is Identifier
 ; is Special symbol

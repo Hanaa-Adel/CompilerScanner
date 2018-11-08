@@ -19,17 +19,17 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
-        Scanner input = new Scanner (System.in);
+       // Scanner input = new Scanner (System.in);
         TinyScanner tinyScanner = new TinyScanner(); 
         Token totalToken=new Token(); // to declare ';' so that the line is finished
-        String in= input.nextLine();
+        //String in= input.nextLine();
         String inputText;
-        inputText = readFile(new File ("‪src\\\\input.txt"));
+      inputText = readFile(new File ("‪src\\\\input.txt"));
        // System.out.println(in);
       //ArrayList<String> tokensList = new ArrayList();
       ArrayList<Token>tokensList=new ArrayList();  
            
-       for(char x:in.toCharArray()){
+       for(char x:inputText.toCharArray()){
            //System.out.println(x);
         // String token=tinyScanner.takeCharacter(x);
        Token token=tinyScanner.takeCharacter(x); // declaration of token from scanner
@@ -38,13 +38,13 @@ public class Main {
            {   token. printToken(token);            
                tokensList.add(token);
            }
-           if (x==';')
-           {
-             totalToken=new Token(";");
-             totalToken= totalToken.generateTokenType(";");
-             totalToken.printToken(totalToken);
-             tokensList.add(totalToken);
-           }
+//           if (x==';')
+//           {
+//             totalToken=new Token(";");
+//             totalToken= totalToken.generateTokenType(";");
+//             totalToken.printToken(totalToken);
+//             tokensList.add(totalToken);
+//           }
           
 //           if (x==';'|x=='*'|x=='+'|x=='<'|x=='-'|x=='/') {token=Character.toString(x);tokensList.add(token);
 //           if(x=='='&& token!="="){token=Character.toString(x);tokensList.add(token);}
