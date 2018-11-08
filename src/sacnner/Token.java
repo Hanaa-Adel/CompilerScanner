@@ -80,7 +80,7 @@ public class Token {
 }
     public void printToken(Token t){
         
-        System.out.println(t.tokenValue + " is a " +"'" + t.tokenType +"'");
+        System.out.println(t.tokenValue + " is " +"'" + t.tokenType +"'");
          
     }
 }

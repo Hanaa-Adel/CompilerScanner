@@ -19,7 +19,7 @@ public class TinyScanner {
     }
     
     public Token takeCharacter(char x){
-        
+        if(currentInput.equals("\n")) currentInput="";
         if (semiCount==1){
             semiCount=0;
             if (special.equals(";")&& x=='}') { special="";return null; } 
@@ -27,10 +27,11 @@ public class TinyScanner {
             special="";
             tinyToken=new Token(temporary);
         tinyToken=tinyToken.generateTokenType(temporary);
+        if (x!=' ' && state!= State.INCOMMENT){
         currentInput+=x;
         if(Character.isAlphabetic(x)) state=State.INID;
         else if (Character.isDigit(x)) state =State.INNUM;
-            
+        }
         return tinyToken;
         }
         if (x==' '&& state!=State.START && state!=State.INCOMMENT)   
@@ -76,15 +77,17 @@ public class TinyScanner {
 
 if (state !=State.INCOMMENT &&x=='*'|x=='+'|x=='<'|x=='-'|x=='/'|x==';'){
         
-        //currentInput+=x;
+        if(state !=State.INCOMMENT){
         state=State.DONE;
         semiCount=1;
         special+=x;
-      
+        }
     }
 if (x=='='& currentInput!=":="){
+    if(state !=State.INCOMMENT){
         currentInput+=x;
         state=State.DONE;
+    }
     }
     if(state==State.DONE)
     {          

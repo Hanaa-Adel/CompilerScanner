@@ -1,14 +1,32 @@
 read is Reserved word
 x is Identifier
 ; is Special symbol
-
+if is Reserved word
+0 is Number
+< is Special symbol
+x is Identifier
+then is Reserved word
+fact is Identifier
+:= is Special symbol
+1 is Number
+; is Special symbol
+repeat is Reserved word
+fact is Identifier
+:= is Special symbol
+fact is Identifier
+* is Special symbol
+x is Identifier
+; is Special symbol
 x is Identifier
 := is Special symbol
 x is Identifier
-+ is Special symbol
+- is Special symbol
 1 is Number
-; is Special symbol
-
-write is Identifier
+until is Reserved word
 x is Identifier
+= is Special symbol
+0 is Number
 ; is Special symbol
+write is Reserved word
+fact is Identifier
+end is Reserved word
